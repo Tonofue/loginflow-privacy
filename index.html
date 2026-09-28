@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LoginFlow プライバシーポリシー / Privacy Policy</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --fg-secondary: #444444;
+    --border: #dddddd;
+    --accent: #0a58ca;
+    --card-bg: #f6f7f9;
+    --code-bg: #eef0f3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --fg: #f2f2f2;
+      --fg-secondary: #c7c7c7;
+      --border: #3a3d42;
+      --accent: #7db3ff;
+      --card-bg: #1e2126;
+      --code-bg: #24272d;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    padding: 24px 16px 64px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.6rem; margin: 0.4em 0 0.2em; }
+  h2 { font-size: 1.25rem; margin-top: 2em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+  h3 { font-size: 1.05rem; margin-top: 1.4em; }
+  p, li { color: var(--fg-secondary); }
+  a { color: var(--accent); word-break: break-word; }
+  .updated { color: var(--fg-secondary); font-size: 0.92rem; margin-bottom: 1.4em; }
+  .lead {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 1.2em 0;
+  }
+  .nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 1em 0 1.6em;
+  }
+  .nav a {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+  code {
+    background: var(--code-bg);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-size: 0.92em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+    font-size: 0.95rem;
+  }
+  th { background: var(--card-bg); }
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3em 0;
+  }
+  section { scroll-margin-top: 16px; }
+  ul { padding-left: 1.3em; }
+  footer {
+    margin-top: 3em;
+    font-size: 0.85rem;
+    color: var(--fg-secondary);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="#ja">日本語</a>
+  <a href="#en">English</a>
+</div>
+
+<section id="ja" lang="ja">
+
+<h1>LoginFlow プライバシーポリシー</h1>
+<p class="updated">発効日: 2026年9月28日 / 最終更新: 2026年9月28日</p>
+
+<div class="lead">
+  <p>LoginFlow はブラウザの拡張機能単体で動作するツールです。ユーザーが保存した情報は
+  すべて<strong>ユーザー自身の端末上の拡張機能ストレージ</strong>（Chrome の
+  <code>chrome.storage.local</code> / <code>chrome.storage.session</code>、および
+  拡張機能ページの <code>localStorage</code>）に留まり、開発者を含む外部のサーバーへ
+  送信されることはありません。開発者はユーザーのデータを収集・閲覧・保存する手段を
+  持ちません。</p>
+</div>
+
+<h2>1. 扱うデータと保存場所</h2>
+<p>LoginFlow は、ユーザーが登録した「サイトごとの自動入力フロー」に関する以下の情報を、
+すべて端末上の拡張機能ストレージにのみ保存します。外部のサーバーには一切送信されません。</p>
+<ul>
+  <li><strong>パスワード</strong> — AES-GCM（256bit）で<strong>暗号化</strong>して保存します。</li>
+  <li><strong>暗号化鍵（encryptionKey）</strong> — 上記パスワードの暗号化に使う鍵そのものも、
+    同じ拡張機能ストレージ内に保存されます（JWK形式）。</li>
+  <li>アカウントのラベル名、ログインID、記録した操作手順（クリック対象のCSS
+    セレクタ、選択した値、クリックした要素のテキストの先頭50文字程度、条件判定や
+    待機に使うURL・パス部分を含む）— これらは<strong>暗号化されず平文で</strong>保存されます。</li>
+  <li>自動入力フローの起点URL（オリジン＋パス）</li>
+  <li>記録中の一時セッション（wizardSession: 開始URL・直前のURL・記録した操作一覧など）</li>
+  <li>直近の実行時刻（lastExecutionTime）、実行ログ（いつ・どのサイトで・成功したか、
+    失敗した場合はどのステップで失敗したかを含め、直近100件まで）</li>
+  <li>（任意設定時のみ）WebAuthn の認証情報ID、生体認証の有効/無効設定と確認タイミング
+    （biometricAuthEnabled / biometricTiming）</li>
+  <li><code>chrome.storage.session</code>（ブラウザを閉じると消える一時領域）に保存する
+    短時間の実行状態（activeFlowSession、生体認証の確認済みフラグ biometricVerified）</li>
+  <li>拡張機能のページ（オプション画面・デモページなど）が使う表示設定は、それらページの
+    <code>localStorage</code> に保存されます（テーマ設定、初回案内を表示済みかのフラグ
+    <code>loginflow_warn_seen</code> など）。いずれも表示上の好みの記録であり、認証情報は
+    含みません。</li>
+</ul>
+
+<h3>暗号化についての注意</h3>
+<p>パスワードの暗号化は、ストレージの中身をそのまま覗いても平文が読めないようにするための
+ものです。ただし暗号化に使う鍵は同じ端末の拡張機能ストレージ内に保存されているため、
+<strong>その端末やChromeプロファイル自体にアクセスできる人（同一端末の他ユーザーや、
+端末を物理的に操作できる人など）に対する保護効果はありません</strong>。あくまで
+「ストレージの中身を偶然・直接見ても読めない」ことを目的とした設計です。</p>
+
+<h3>生体認証（WebAuthn）について</h3>
+<p>生体認証を有効にすると、保存済みの認証情報を自動入力で使う前に、指紋認証やPINなど
+端末の認証を求める確認画面が挟まります。これは<strong>暗号化鍵を生成・保護する機能ではなく、
+「使う前にもう一度本人確認を行う」ための実行前チェック</strong>です。確認結果は
+<code>chrome.storage.session</code>に一時的に記録され、ブラウザを閉じると消えます。</p>
+
+<h2>2. 外部送信・収集・販売・共有はありません</h2>
+<p>LoginFlow のコード内には、ユーザーデータを外部へ送信する処理（<code>fetch</code>、
+<code>XMLHttpRequest</code>、<code>sendBeacon</code>、<code>WebSocket</code> など）は
+一切実装されていません。アクセス解析（アナリティクス）やトラッキング、クラッシュレポートの
+自動送信も行っていません。ユーザーデータの第三者への提供・共有・販売は行いません。</p>
+
+<h2>3. 権限とその理由</h2>
+<table>
+  <tr><th>権限</th><th>用途</th></tr>
+  <tr><td><code>storage</code></td><td>登録したサイト情報・暗号化したパスワード・実行ログなどをローカルに保存するため</td></tr>
+  <tr><td><code>activeTab</code></td><td>ユーザーが拡張機能アイコンやショートカットを操作した際に今開いているタブへ自動入力を実行するため、および操作手順の記録（ウィザード）を開始したタブでスクリプトを動かすため</td></tr>
+  <tr><td><code>tabs</code></td><td>読み込みが完了したタブのURLを端末内で保存済みサイトの一覧と照合し、保存済みだが未許可のサイトを開いたときにバッジ表示やポップアップで許可を促すため。このURLはどこにも保存・送信されません</td></tr>
+  <tr><td><code>scripting</code></td><td>登録済みサイトや、操作手順を記録中のタブで自動入力・記録用のスクリプトを実行するため</td></tr>
+  <tr><td><code>downloads</code></td><td>バックアップファイル（パスフレーズで暗号化したJSON）を、ユーザーが選んだ保存先へ書き出すため</td></tr>
+  <tr><td>ホスト権限（<code>http(s)://*/*</code>、オプション権限）</td><td>ユーザーがそのサイトで「操作を記録」を開始した時、自動入力トグルをオンにした時、またはポップアップで「許可」ボタンを押した時に1件ずつ要求される「オプトイン」方式です。トグルをオフにすると許可も取り消されます。既定では未許可で、許可したサイトでのみ自動入力が動作します</td></tr>
+</table>
+
+<h2>4. ユーザーによるコントロール</h2>
+<ul>
+  <li>オプションページから、登録済みサイトの削除、実行ログの削除、バックアップの作成・復元ができます。</li>
+  <li>サイトごとの許可（ホスト権限）は自動入力トグルと連動してオン・オフでき、オフにすると当該サイトでの自動入力は動作しません。</li>
+  <li>拡張機能をアンインストールすると、端末上の拡張機能ストレージ（保存サイト・暗号化されたパスワード・実行ログなどすべて）は削除されます。ただし、以前にバックアップとして書き出したファイルはディスク上にそのまま残るため、不要であればユーザー自身で削除してください。</li>
+</ul>
+
+<h2>5. 外部リンク</h2>
+<p>拡張機能の画面には、開発者への任意の寄付を受け付ける Ko-fi へのテキストリンク
+（<a href="https://ko-fi.com/tonofue" target="_blank" rel="noopener">https://ko-fi.com/tonofue</a>）、
+および開発者の X（旧Twitter）アカウントへのリンク
+（<a href="https://x.com/LoginFlow" target="_blank" rel="noopener">https://x.com/LoginFlow</a>）
+が表示される場合があります。これらは通常のテキストリンクであり、画像バッジなどの
+外部リソースを自動的に読み込むことはありません。リンクをクリックした場合にのみ、
+ブラウザで該当サイトが新しいタブで開きます。拡張機能自体がユーザーデータをこれらの
+サイトへ送信することはありません。リンク先での操作にはそれぞれのサイトのプライバシー
+ポリシーが適用されます。</p>
+
+<h2>6. Chrome ウェブストアの Limited Use について</h2>
+<p>LoginFlow による情報の利用は、Chrome ウェブストアの
+「ユーザーデータに関するポリシー（Limited Use要件を含む）」に準拠しています。
+データは自動入力・マクロ機能を提供する目的にのみ利用され、広告や信用力評価を含め、
+それ以外の目的での利用・第三者への提供は行いません。</p>
+
+<h2>7. お問い合わせ</h2>
+<p>運営者: Tonofue</p>
+<p>本ポリシーやプライバシーに関するご質問は、GitHub の Issue でご連絡ください。
+公開の場となるため、パスワードなどの個人情報・秘匿情報はIssueに書き込まないでください。</p>
+<p><a href="https://github.com/Tonofue/loginflow-privacy/issues" target="_blank" rel="noopener">https://github.com/Tonofue/loginflow-privacy/issues</a></p>
+
+<h2>8. 本ポリシーの変更について</h2>
+<p>本ポリシーの内容は、機能追加や見直しに応じて更新される場合があります。変更があった
+場合は本ページを更新し、ページ上部の発効日・最終更新日を改めます。</p>
+
+</section>
+
+<hr>
+
+<section id="en" lang="en">
+
+<h1>LoginFlow Privacy Policy</h1>
+<p class="updated">Effective date: September 28, 2026 / Last updated: September 28, 2026</p>
+
+<div class="lead">
+  <p>LoginFlow is a self-contained browser extension. Everything you save stays in
+  <strong>extension storage on your own device</strong> (Chrome's <code>chrome.storage.local</code>
+  and <code>chrome.storage.session</code>, plus the extension pages' own
+  <code>localStorage</code>) and is never sent to any server operated by the developer or
+  anyone else. The developer has no means to collect, view, or retain your data.</p>
+</div>
+
+<h2>1. Data Handled and Where It Is Stored</h2>
+<p>LoginFlow stores the following information related to the per-site auto-fill "flows" you
+create, entirely in extension storage on your device. None of it is transmitted to any
+external server.</p>
+<ul>
+  <li><strong>Passwords</strong> — stored <strong>encrypted with AES-GCM (256-bit)</strong>.</li>
+  <li><strong>The encryption key itself (<code>encryptionKey</code>)</strong> — used to
+    encrypt/decrypt the password above — is stored (as a JWK) in the same extension storage.</li>
+  <li>Account labels, login IDs, and the recorded steps of a flow (CSS selectors of the
+    elements involved, selected values, the first ~50 characters of clicked elements' text,
+    and URLs including path used for flow conditions or wait targets) — these are stored
+    <strong>unencrypted, in plain text</strong>.</li>
+  <li>The flow's trigger URL (origin + path).</li>
+  <li>A temporary recording session (<code>wizardSession</code>: the start URL, the most
+    recent URL, and the list of recorded actions).</li>
+  <li>The last execution time per site (<code>lastExecutionTime</code>) and execution logs
+    (when, which site, success or failure, and which step failed if any — the most recent
+    100 entries).</li>
+  <li>(Only if you opt in) a WebAuthn credential ID, and your biometric settings
+    (<code>biometricAuthEnabled</code> / <code>biometricTiming</code>).</li>
+  <li>Short-lived runtime state kept in <code>chrome.storage.session</code> (cleared when the
+    browser closes): <code>activeFlowSession</code> and a temporary
+    <code>biometricVerified</code> flag.</li>
+  <li>Display preferences used by the extension's own pages (options page, demo page, etc.)
+    are stored in those pages' <code>localStorage</code> — e.g. the selected theme and a flag
+    recording whether the first-run notice has been dismissed
+    (<code>loginflow_warn_seen</code>). These are display preferences only and contain no
+    credentials.</li>
+</ul>
+
+<h3>A note on encryption</h3>
+<p>Password encryption prevents the stored value from being read as plain text if someone
+simply looks inside the storage. However, the key used for that encryption is stored in the
+same on-device extension storage, so <strong>this does not protect against someone who
+already has access to the device or Chrome profile itself</strong> (for example another user
+of the same machine, or anyone with physical access to it). It is designed to prevent casual
+or incidental exposure of the stored value, not to withstand a device-level attacker.</p>
+
+<h3>About WebAuthn (biometric confirmation)</h3>
+<p>Enabling biometric authentication adds a confirmation step — fingerprint, PIN, or other
+device authentication — before a saved credential is used to auto-fill a form. This is
+<strong>a pre-use confirmation gate, not a mechanism that generates, unlocks, or otherwise
+protects the encryption key</strong>. The result of that confirmation is recorded temporarily
+in <code>chrome.storage.session</code> and is cleared when the browser closes.</p>
+
+<h2>2. No Collection, Transmission, Sale, or Sharing</h2>
+<p>The extension's source code contains no code that transmits your data externally
+(no <code>fetch</code>, <code>XMLHttpRequest</code>, <code>sendBeacon</code>, or
+<code>WebSocket</code> calls). There is no analytics, tracking, or automatic crash reporting.
+Your data is never sold, shared, or disclosed to any third party.</p>
+
+<h2>3. Permissions and Why They Are Needed</h2>
+<table>
+  <tr><th>Permission</th><th>Purpose</th></tr>
+  <tr><td><code>storage</code></td><td>To store your registered sites, the encrypted password, and execution logs locally</td></tr>
+  <tr><td><code>activeTab</code></td><td>To run the auto-fill flow on the tab you are currently viewing when you trigger it via the icon or a keyboard shortcut, and to run the recording script on the tab where you start the step-recording wizard</td></tr>
+  <tr><td><code>tabs</code></td><td>To compare a completed tab's URL, on-device, against your saved sites so the extension can badge the icon and open the popup to ask for permission when you open a saved site that is not yet permitted. This URL is never stored or sent anywhere</td></tr>
+  <tr><td><code>scripting</code></td><td>To run the auto-fill script on sites you have registered, and the recording script on the tab where you start the wizard</td></tr>
+  <tr><td><code>downloads</code></td><td>To let you export a backup file (a passphrase-encrypted JSON file) to a location you choose</td></tr>
+  <tr><td>Host permissions (<code>http(s)://*/*</code>, optional)</td><td>Requested one site at a time — when you start recording on that site, turn on that site's auto-fill toggle, or press "Allow" in the popup. Turning the toggle off revokes the permission again. Denied by default; auto-fill only runs on sites you have explicitly permitted</td></tr>
+</table>
+
+<h2>4. Your Control</h2>
+<ul>
+  <li>From the options page you can delete saved sites, clear execution logs, and create or restore backups.</li>
+  <li>Per-site host permissions are tied to that site's auto-fill toggle; turning it off disables auto-fill and revokes the permission for that site.</li>
+  <li>Uninstalling the extension deletes all on-device extension storage (saved sites, the encrypted password, execution logs, and everything else listed above). Backup files you previously exported remain on disk and are not deleted automatically — remove them yourself if you no longer need them.</li>
+</ul>
+
+<h2>5. External Links</h2>
+<p>The extension's UI may show a plain text link to Ko-fi for supporting the developer
+(<a href="https://ko-fi.com/tonofue" target="_blank" rel="noopener">https://ko-fi.com/tonofue</a>),
+and a link to the developer's X (formerly Twitter) account
+(<a href="https://x.com/LoginFlow" target="_blank" rel="noopener">https://x.com/LoginFlow</a>).
+These are ordinary text links; no image badge or other external resource is loaded
+automatically. The linked site only opens, in a new tab, if you click it. The extension
+itself never sends any of your data to these sites. Your use of those sites is governed by
+their own privacy policies.</p>
+
+<h2>6. Chrome Web Store Limited Use Disclosure</h2>
+<p>LoginFlow's use of information complies with the Chrome Web Store User Data Policy,
+including the Limited Use requirements. Data is used solely to provide the auto-fill/macro
+feature and is not used or transferred for any other purpose, including advertising or
+creditworthiness.</p>
+
+<h2>7. Contact</h2>
+<p>Operator: Tonofue</p>
+<p>For questions about this policy or your privacy, please open an issue on GitHub. Issues
+are public, so please do not post passwords or other personal/sensitive information there.</p>
+<p><a href="https://github.com/Tonofue/loginflow-privacy/issues" target="_blank" rel="noopener">https://github.com/Tonofue/loginflow-privacy/issues</a></p>
+
+<h2>8. Changes to This Policy</h2>
+<p>This policy may be updated from time to time as the extension's features change. Any
+changes will be published on this page, with the effective date and last-updated date at the
+top revised accordingly.</p>
+
+</section>
+
+<footer>LoginFlow &mdash; Privacy Policy</footer>
+
+</body>
+</html>
